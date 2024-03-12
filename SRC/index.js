@@ -1,3 +1,11 @@
 import "./style.css";
 
-console.warn("Welcome! let's start app");
+function loadBirthdays() {
+  fetch("birthdays.json").then(r =>
+    r.json().then(birthdays => {
+      console.warn("birthdays?", birthdays);
+    })
+  );
+}
+
+loadBirthdays();
