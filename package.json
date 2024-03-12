@@ -1,0 +1,12 @@
+{
+  "name": "birthdays-calendar-list",
+  "version": "1.0.0",
+  "description": "this is the example used to practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Voichita Truscai",
+  "license": "ISC"
+}
