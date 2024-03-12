@@ -1,1 +1,3 @@
-console.info("Welcome! let's start app");
+import "./style.css";
+
+console.warn("Welcome! let's start app");
