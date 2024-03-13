@@ -16,7 +16,12 @@ function renderBirthdays(birthdays) {
 }
 
 function loadBirthdays() {
-  fetch("http://localhost:3000/birthdays.json").then(r =>
+  fetch("http://localhost:3000/birthdays-json", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(r =>
     r.json().then(birthdays => {
       renderBirthdays(birthdays);
     })
