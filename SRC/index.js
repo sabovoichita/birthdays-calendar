@@ -5,6 +5,7 @@ function getBirthdayAsHTML(birthday) {
   <td>${birthday.name}</td>
   <td>${birthday.contact}</td>
   <td>${birthday.age}</td>
+  <td>${birthday.url}</td>
   <td>${birthday.DOB}</td>
 </tr>`;
 }
@@ -15,7 +16,7 @@ function renderBirthdays(birthdays) {
 }
 
 function loadBirthdays() {
-  fetch("birthdays.json").then(r =>
+  fetch("http://localhost:3000/birthdays.json").then(r =>
     r.json().then(birthdays => {
       renderBirthdays(birthdays);
     })
