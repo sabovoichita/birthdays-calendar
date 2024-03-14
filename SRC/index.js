@@ -32,7 +32,9 @@ function getBirthdayAsHTML(birthday) {
   <td>${birthday.url}</td>
   <td>${birthday.DOB}</td>
   <td>
-  <button type="button" data-id="${birthday.id}" class="action btn delete-btn">♻</button>
+  <button type="button" data-id="${birthday.id}" class="action-btn edit-btn" title="edit">🖍</button>
+  <button type="button" data-id="${birthday.id}" class="action-btn delete-btn" title="recycle">♻</button>
+
   </td>
 </tr>`;
 }

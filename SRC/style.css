@@ -60,7 +60,7 @@ h3 {
 #birthdayTable td {
   border: 1px solid plum;
   padding: 5px;
-  line-height: 25px;
+  line-height: 30px;
 }
 #birthdayTable th {
   color: white;
@@ -77,6 +77,11 @@ h3 {
 #birthdayTable tfoot input:not([type="image" i]) {
   box-sizing: border-box;
 }
+
+.table-actions {
+  width: 90px;
+}
+
 .tbar {
   margin-bottom: 10px;
   display: flex;
@@ -96,12 +101,17 @@ h3 {
   min-width: 35px;
 }
 
+.edit-btn {
+  display: none;
+  color: #094b0e;
+}
+
 .delete-btn {
   display: none;
   color: #ea1010;
 }
 
-#birthdayTable tr:hover .delete-btn {
+#birthdayTable tr:hover .action-btn {
   display: inline-block;
 }
 
