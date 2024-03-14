@@ -6,13 +6,13 @@ A Birthday Calendar List to store all important information (name, contact, age,
 
 -[x] Birthday Calendar List (CRUD\*) Operations
 
-    -[ ] **C**reate
+    -[ ]**C**reate
 
-    -[x] **R**ead
+    -[x]**R**ead
 
-    -[] **U**pdate
+    -[]**U**pdate
 
-    -[] **D**elete
+    -[]**D**elete
 
 -[ ] Search
 
