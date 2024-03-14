@@ -4,19 +4,16 @@ A Birthday Calendar List to store all important information (name, contact, age,
 
 ## 🎂 Features and Usage
 
--[x] Birthday Calendar List (CRUD\*) Operations
+- [x] Birthday Calendar List (CRUD\*) Operations
 
-    -[ ]**C**reate
+  - [ ] **C**reate
+  - [x] **R**ead
+  - [ ] **U**pdate
+  - [ ] **D**elete
 
-    -[x]**R**ead
+- [ ] Search
 
-    -[]**U**pdate
-
-    -[]**D**elete
-
--[ ] Search
-
--[ ] Loading Mask
+- [ ] Loading Mask
 
 ## ‼ Start (Daily usage)
 
