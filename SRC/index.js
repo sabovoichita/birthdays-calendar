@@ -7,6 +7,7 @@ function getBirthdayAsHTML(birthday) {
   <td>${birthday.age}</td>
   <td>${birthday.url}</td>
   <td>${birthday.DOB}</td>
+  <td>x</td>
 </tr>`;
 }
 

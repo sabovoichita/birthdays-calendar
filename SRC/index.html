@@ -27,19 +27,52 @@
         <label for="search">🔎</label>
       </div>
 
-      <table id="birthdayTable" border="1">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Contact</th>
-            <th>Age</th>
-            <th>url</th>
-            <th>DOB</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <form action="secretary.html" method="get">
+        <table id="birthdayTable" border="1">
+          <colgroup>
+            <col span="1" style="width: 120px" />
+            <col span="1" style="width: 120px" />
+            <col span="1" style="width: 90px" />
+            <col />
+            <col span="1" style="width: 90px" />
+            <col span="1" style="width: 90px" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Age</th>
+              <th>url</th>
+              <th>DOB</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <input required type="text" name="name" id="name" placeholder="Enter name" />
+              </td>
+              <td>
+                <input required type="text" name="contact" id="contact" placeholder="Enter contact" />
+              </td>
+              <td>
+                <input required type="number" name="age" id="age" placeholder="Age?" />
+              </td>
+              <td>
+                <input required type="text" name="url" id="url" placeholder="Enter url" />
+              </td>
+              <td>
+                <input required type="date" name="DOB" id="DOB" placeholder="Enter DOB" />
+              </td>
+              <td>
+                <button type="submit">🎁</button>
+                <button type="reset">❌</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </form>
     </section>
 
     <footer>🕯 Source Code</footer>

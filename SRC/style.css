@@ -70,6 +70,12 @@ h3 {
   background-color: #f2f2f2;
 }
 
+#birthdayTable input {
+  width: 100%;
+}
+#birthdayTable tfoot input:not([type="image" i]) {
+  box-sizing: border-box;
+}
 .tbar {
   margin-bottom: 10px;
   display: flex;
