@@ -60,6 +60,7 @@ h3 {
 #birthdayTable td {
   border: 1px solid plum;
   padding: 5px;
+  line-height: 25px;
 }
 #birthdayTable th {
   color: white;
@@ -89,6 +90,19 @@ h3 {
 
 .tfill {
   flex: 1;
+}
+.action-btn {
+  cursor: pointer;
+  min-width: 35px;
+}
+
+.delete-btn {
+  display: none;
+  color: #ea1010;
+}
+
+#birthdayTable tr:hover .delete-btn {
+  display: inline-block;
 }
 
 footer {

@@ -21,7 +21,9 @@ function getBirthdayAsHTML(birthday) {
   <td>${birthday.age}</td>
   <td>${birthday.url}</td>
   <td>${birthday.DOB}</td>
-  <td>x</td>
+  <td>
+  <button type="button" class="action btn delete-btn">♻</button>
+  </td>
 </tr>`;
 }
 
