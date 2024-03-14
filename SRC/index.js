@@ -14,6 +14,16 @@ function createBirthdayRequest(birthday) {
   }).then(r => r.json());
 }
 
+function deleteBirthdayRequest(id) {
+  return fetch("http://localhost:3000/birthdays-json/delete", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ id: id })
+  }).then(r => r.json());
+}
+
 function getBirthdayAsHTML(birthday) {
   return `<tr>
   <td>${birthday.name}</td>
@@ -22,7 +32,7 @@ function getBirthdayAsHTML(birthday) {
   <td>${birthday.url}</td>
   <td>${birthday.DOB}</td>
   <td>
-  <button type="button" class="action btn delete-btn">♻</button>
+  <button type="button" data-id="${birthday.id}" class="action btn delete-btn">♻</button>
   </td>
 </tr>`;
 }
@@ -71,6 +81,17 @@ function onSubmit(e) {
 
 function initEvents() {
   $("#birthdaysForm").addEventListener("submit", onSubmit);
+
+  $("#birthdayTable tbody").addEventListener("click", e => {
+    if (e.target.matches("button.delete-btn")) {
+      const id = e.target.dataset.id;
+      deleteBirthdayRequest(id).then(status => {
+        if (status.success) {
+          window.location.reload();
+        }
+      });
+    }
+  });
 }
 initEvents();
 loadBirthdays();
