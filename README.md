@@ -1,3 +1,5 @@
+# live link[Birthdays-Calendar-List](https://sabovoichita.github.io/Birthdays-Calendar-List/)
+
 # 💌 Birthdays-Calendar-List
 
 A Birthday Calendar List to store all important information (name, contact, age, url, DOB).
@@ -6,10 +8,10 @@ A Birthday Calendar List to store all important information (name, contact, age,
 
 - [x] Birthday Calendar List (CRUD\*) Operations
 
-  - [ ] **C**reate
+  - [x] **C**reate
   - [x] **R**ead
-  - [ ] **U**pdate
-  - [ ] **D**elete
+  - [x] **U**pdate
+  - [x] **D**elete
 
 - [ ] Search
 
