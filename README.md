@@ -1,6 +1,6 @@
 # 💌 Birthdays-Calendar-List
 
-A Birthday Calendar List to store all important information(name, contact, age, url, DOB).
+A Birthday Calendar List to store all important information (name, contact, age, url, DOB).
 
 ## 🎂 Features and Usage
 
@@ -26,7 +26,7 @@ Start node-API
 cd C:/Users/kita/Desktop/Projects/toDo-node
 ```
 
-start app(sun in current project):
+start app(run in current project):
 
 ```sh
 npm start
@@ -36,6 +36,6 @@ or
 
 ```sh
 Shift+RightClick in node folder to open PowerShell
-and then
+and
 npm start
 ```
