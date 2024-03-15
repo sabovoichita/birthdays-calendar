@@ -38,11 +38,15 @@ function updateBirthdayRequest(birthday) {
 }
 
 function getBirthdayAsHTML(birthday) {
+  const url = birthday.url;
+  const displayUrl = url.startsWith("https://www") ? url.substring(12) : url;
   return `<tr>
   <td>${birthday.name}</td>
   <td>${birthday.contact}</td>
   <td>${birthday.age}</td>
-  <td>${birthday.url}</td>
+  <td>
+  <a href = " ${url}"  target = "_blank">${displayUrl}</a>
+  </td>
   <td>${birthday.dob}</td>
   <td>
   <button type="button" data-id="${birthday.id}" class="action-btn edit-btn" title="edit">🖍</button>
