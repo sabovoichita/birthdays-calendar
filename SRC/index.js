@@ -127,6 +127,10 @@ function setBithdayValues(birthday) {
 
 function initEvents() {
   $("#birthdaysForm").addEventListener("submit", onSubmit);
+  $("#birthdaysForm").addEventListener("reset", () => {
+    console.warn("reset", editId);
+    editId = undefined;
+  });
 
   $("#birthdayTable tbody").addEventListener("click", e => {
     if (e.target.matches("button.delete-btn")) {
