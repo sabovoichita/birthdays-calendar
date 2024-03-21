@@ -34,7 +34,7 @@ function updateBirthdayRequest(birthday) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(birthday)
-  }).then(r => r.json);
+  }).then(r => r.json());
 }
 
 function getBirthdayAsHTML(birthday) {
@@ -84,7 +84,7 @@ function onSubmit(e) {
     birthday.id = editId;
     console.warn("should we edit?", editId, birthday);
     updateBirthdayRequest(birthday).then(status => {
-      // console.warn("status", status);
+      console.warn("status", status);
       if (status.success) {
         window.location.reload();
       }
