@@ -115,7 +115,8 @@ function onSubmit(e) {
       if (status.success) {
         // window.location.reload();
         birthday.id = status.id;
-        allBirthdays(birthday);
+        allBirthdays = allBirthdays.map(birthday => birthday);
+        allBirthdays.push(birthday);
         renderBirthdays(allBirthdays);
         $("#birthdayForm").reset();
       }
