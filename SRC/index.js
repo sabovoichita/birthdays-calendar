@@ -56,9 +56,35 @@ function getBirthdayAsHTML(birthday) {
 </tr>`;
 }
 
+function areBirthdayEquals(renderedBirthdays, birthdays) {
+  if (renderedBirthdays === birthdays) {
+    console.info("same array");
+    return true;
+  }
+  if (renderedBirthdays.length === birthdays.length) {
+    const eq = renderedBirthdays.every((birthday, i) => birthday === birthday[i]);
+    if (eq) {
+      console.info("same content in arrays");
+      return true;
+    }
+  }
+  return false;
+}
+
+let renderedBirthdays = [];
 function renderBirthdays(birthdays) {
+  // console.time("eq-check");
+  if (areBirthdayEquals(renderedBirthdays, birthdays)) {
+    // console.timeEnd("eq-check");
+    return;
+  }
+  // console.timeEnd("eq-check");
+
+  renderedBirthdays === birthdays;
+  console.time("render");
   const birthdayHTML = birthdays.map(getBirthdayAsHTML);
   $("#birthdayTable tbody").innerHTML = birthdayHTML.join("");
+  console.timeEnd("render");
 }
 
 function loadBirthdays() {
