@@ -71,6 +71,7 @@ function loadBirthdays() {
     r.json().then(birthdays => {
       allBirthdays = birthdays;
       renderBirthdays(birthdays);
+      console.timeEnd("app-ready");
     })
   );
 }
@@ -86,7 +87,11 @@ function onSubmit(e) {
     updateBirthdayRequest(birthday).then(status => {
       console.warn("status", status);
       if (status.success) {
-        window.location.reload();
+        // window.location.reload();
+        birthday.id = status.id;
+        allBirthdays(birthday);
+        renderBirthdays(allBirthdays);
+        $("#birthdayForm").reset();
       }
     });
   } else
@@ -151,8 +156,8 @@ function initEvents() {
     renderBirthdays(birthdays);
   });
 
-  $("#birthdaysForm").addEventListener("submit", onSubmit);
-  $("#birthdaysForm").addEventListener("reset", () => {
+  $("#birthdayForm").addEventListener("submit", onSubmit);
+  $("#birthdayForm").addEventListener("reset", () => {
     console.warn("reset", editId);
     editId = undefined;
   });
