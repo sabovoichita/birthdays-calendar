@@ -129,10 +129,10 @@ function setBithdayValues(birthday) {
   $("input[name=dob]").value = birthday.dob;
 }
 
-function filterElements(search) {
+function filterElements(birthdays, search) {
   search = search.toLowerCase();
   console.warn("search %o", search);
-  return allBirthdays.filter(birthday => {
+  return birthdays.filter(birthday => {
     // console.log("birthday", birthday.name === search);
     return (
       birthday.name.toLowerCase().includes(search) ||
@@ -147,7 +147,7 @@ function filterElements(search) {
 function initEvents() {
   $("#search").addEventListener("input", e => {
     const search = e.target.value;
-    const birthdays = filterElements(search);
+    const birthdays = filterElements(allBirthdays, search);
     renderBirthdays(birthdays);
   });
 
