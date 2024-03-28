@@ -167,7 +167,8 @@ function initEvents() {
       const id = e.target.dataset.id;
       deleteBirthdayRequest(id).then(status => {
         if (status.success) {
-          window.location.reload();
+          allBirthdays = allBirthdays.filter(birthday => birthday.id !== id);
+          renderBirthdays(allBirthdays);
         }
       });
     } else if (e.target.matches("button.edit-btn")) {
