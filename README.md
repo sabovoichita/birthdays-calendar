@@ -25,6 +25,9 @@ A Birthday Calendar List to store all important information (name, contact, age,
 
 - [ ] add live links!
 
+##Live Preview
+![Preview](images/preview.jpg)
+
 ## ‼ Start (Daily usage)
 
 Start node-API:
@@ -38,6 +41,42 @@ start app(run in current project):
 ```sh
 npm start
 ```
+
+##📝Steps to create this project
+
+## 📋 Steps to create this project
+
+- [x] create **New repository** in [github/new](https://github.com/new)
+  - [x] check Add a **README** file
+  - [x] Add **.gitignore** (Node template)
+- [x] **clone** it on your pc (follow Install guide)
+- [x] create **index.html** file with standards
+- [x] create **table** that represents final desing and structure (2 persons's birthdays as example)
+  - [x] Table headers -> [Name, contact, age, DOB {github, linkedin, facebook}, url ]
+  - [x] remove 2 example persons's birthdays and load them from js
+  - [x] hint - TABLE -> THEAD & TBODY & TFOOT tags
+- [ ] load birthdays.json and render them in page
+
+## 🧩 Connect with API
+
+Current app can connect with external [node-api-birthdays](https://github.com/sabovoichita/node-api-birthdays) to store it's data.
+
+**Steps**
+
+- [x] Clone & Start node-api
+- [x] From current UI make request to node-api (using json or mysql url)
+
+##⚙Install
+-fork api
+-api: [api](https://github.com/sabovoichita/node-api-birthdays)
+git clone https://github.com/sabovoichita/node-api-birthdays.git
+cd node-api-birthdays
+npm install
+
+-app:[app](https://github.com/sabovoichita/Birthdays-Calendar-List)
+git clone https://github.com/sabovoichita/Birthdays-Calendar-List.git
+cd Birthdays-Calendar-List
+npm install
 
 ## JSon file as storage
 
