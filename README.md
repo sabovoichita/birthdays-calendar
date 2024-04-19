@@ -17,25 +17,25 @@ A Birthday Calendar List to store all important information (name, contact, age,
 
 - [ ] Loading Mask
 
+- [ ] Sort & move input bar under thead
+
+- [ ] display per month!
+
+- [ ] Convert to React!
+
+- [ ] add live links!
+
 ## ‼ Start (Daily usage)
 
-Start node-API
+Start node-API:
 
 ```sh
-cd C:/Users/kita/Desktop/Projects/toDo-node
+npm run api
 ```
 
 start app(run in current project):
 
 ```sh
-npm start
-```
-
-or
-
-```sh
-Shift+RightClick in node folder to open PowerShell
-and
 npm start
 ```
 
