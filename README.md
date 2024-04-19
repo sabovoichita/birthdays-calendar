@@ -26,7 +26,7 @@ A Birthday Calendar List to store all important information (name, contact, age,
 - [ ] add live links!
 
 ##Live Preview
-![Preview](images/preview.jpg)
+![Preview](images/Preview.png)
 
 ## ‼ Start (Daily usage)
 
