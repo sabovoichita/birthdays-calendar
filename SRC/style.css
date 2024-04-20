@@ -15,7 +15,7 @@ section {
 }
 
 header {
-  background-image: url(/images/cake.webp);
+  /* background-image: url(/images/cake.webp); */
 }
 #my-picture {
   padding: 5px;
@@ -31,7 +31,7 @@ header img {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: linear-gradient(90deg, #e20a88, transparent);
+  background: linear-gradient(90deg, #8b8488, transparent);
 }
 #header-info {
   padding: 10px;
