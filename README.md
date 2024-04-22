@@ -2,8 +2,6 @@
 
 A Birthday Calendar List to store all important information (name, contact, age, url, DOB).
 
-[link](https://sabovoichita.github.io/birthdays-calendar/)
-
 ## 🎂 Features and Usage
 
 - [x] Birthday Calendar List (CRUD\*) Operations
@@ -23,9 +21,11 @@ A Birthday Calendar List to store all important information (name, contact, age,
 
 - [ ] Convert to React!
 
-- [x ] add live link!
+- [x] add live link!
 
-##Live Preview
+## Live Preview
+
+[link](https://sabovoichita.github.io/birthdays-calendar/)
 
 ![Preview](images/preview.png)
 
