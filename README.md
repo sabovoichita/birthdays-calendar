@@ -23,7 +23,7 @@ A Birthday Calendar List to store all important information (name, contact, age,
 
 - [ ] Convert to React!
 
-- [ ] add live links!
+- [x ] add live link!
 
 ##Live Preview
 
