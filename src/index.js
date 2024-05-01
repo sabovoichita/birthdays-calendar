@@ -1,4 +1,7 @@
 import "./style.css";
+
+const isDemo = location.host === "github.com/sabovoichita";
+
 const API = {
   CREATE: {
     URL: "http://localhost:3000/birthdays-json/create",
@@ -21,7 +24,6 @@ let editId;
 let allBirthdays = [];
 
 // for demo purposes...
-const isDemo = location.host === "sabovoichita.github.io";
 if (isDemo) {
   API.READ.URL = "./data/birthdays.json";
   API.DELETE.URL = "./data/delete.json";
