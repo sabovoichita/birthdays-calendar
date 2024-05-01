@@ -1,6 +1,6 @@
 import "./style.css";
 
-const isDemo = location.host === "github.com/sabovoichita";
+const isDemo = location.host === "sabovoichita.github.io";
 
 const API = {
   CREATE: {
