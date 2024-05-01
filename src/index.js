@@ -58,13 +58,13 @@ function getBirthdayAsHTML(birthday) {
 
 function areBirthdayEquals(renderedBirthdays, birthdays) {
   if (renderedBirthdays === birthdays) {
-    console.info("same array");
+    // console.info("same array");
     return true;
   }
   if (renderedBirthdays.length === birthdays.length) {
     const eq = renderedBirthdays.every((birthday, i) => birthday === birthday[i]);
     if (eq) {
-      console.info("same content in arrays");
+      // console.info("same content in arrays");
       return true;
     }
   }
@@ -81,10 +81,10 @@ function renderBirthdays(birthdays) {
   // console.timeEnd("eq-check");
 
   renderedBirthdays === birthdays;
-  console.time("render");
+  // console.time("render");
   const birthdayHTML = birthdays.map(getBirthdayAsHTML);
   $("#birthdayTable tbody").innerHTML = birthdayHTML.join("");
-  console.timeEnd("render");
+  // console.timeEnd("render");
 }
 
 function loadBirthdays() {
@@ -97,7 +97,7 @@ function loadBirthdays() {
     r.json().then(birthdays => {
       allBirthdays = birthdays;
       renderBirthdays(birthdays);
-      console.timeEnd("app-ready");
+      // console.timeEnd("app-ready");
     })
   );
 }
@@ -109,9 +109,9 @@ function onSubmit(e) {
 
   if (editId) {
     birthday.id = editId;
-    console.warn("should we edit?", editId, birthday);
+    // console.warn("should we edit?", editId, birthday);
     updateBirthdayRequest(birthday).then(status => {
-      console.warn("status", status);
+      // console.warn("status", status);
       if (status.success) {
         // window.location.reload();
         birthday.id = status.id;
@@ -133,7 +133,7 @@ function onSubmit(e) {
 function startEdit(id) {
   editId = id;
   const birthday = allBirthdays.find(birthday => birthday.id === id);
-  console.warn("edit", id, birthday);
+  // console.warn("edit", id, birthday);
   setBithdayValues(birthday);
 }
 
@@ -163,7 +163,7 @@ function setBithdayValues(birthday) {
 
 function filterElements(birthdays, search) {
   search = search.toLowerCase();
-  console.warn("search %o", search);
+  // console.warn("search %o", search);
   return birthdays.filter(birthday => {
     // console.log("birthday", birthday.name === search);
     return (
@@ -185,7 +185,7 @@ function initEvents() {
 
   $("#birthdayForm").addEventListener("submit", onSubmit);
   $("#birthdayForm").addEventListener("reset", () => {
-    console.warn("reset", editId);
+    // console.warn("reset", editId);
     editId = undefined;
   });
 
