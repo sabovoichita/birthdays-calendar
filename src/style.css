@@ -118,6 +118,11 @@ h3 {
   display: inline-block;
 }
 
+.order {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
 footer {
   background-color: rgb(148, 131, 141);
   color: #fff;
