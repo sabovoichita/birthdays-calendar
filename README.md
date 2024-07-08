@@ -25,7 +25,7 @@ A Birthday Calendar List to store all important information (name, contact, age,
 
 ## Live Preview
 
-[✔🆗link](https://sabovoichita.github.io/birthdays-calendar/)
+[live](https://sabovoichita.github.io/birthdays-calendar/)
 
 ![Preview](src/images/preview.png)
 
