@@ -105,6 +105,7 @@ function areBirthdayEquals(renderedBirthdays, birthdays) {
 
 let renderedBirthdays = [];
 function renderBirthdays(birthdays) {
+  // birthdays.sort(sortBirthdays);
   // console.time("eq-check");
   if (areBirthdayEquals(renderedBirthdays, birthdays)) {
     // console.timeEnd("eq-check");
@@ -196,16 +197,33 @@ function setBithdayValues(birthday) {
 function filterElements(birthdays, search) {
   search = search.toLowerCase();
   // console.warn("search %o", search);
-  return birthdays.filter(birthday => {
+  return birthdays.filter(({ name, contact, age, url, dob }) => {
     // console.log("birthday", birthday.name === search);
     return (
-      birthday.name.toLowerCase().includes(search) ||
-      birthday.contact.toLowerCase().includes(search) ||
-      birthday.age.toLowerCase().includes(search) ||
-      birthday.url.toLowerCase().includes(search) ||
-      birthday.dob.toLowerCase().includes(search)
+      name.toLowerCase().includes(search) ||
+      contact.toLowerCase().includes(search) ||
+      age.toLowerCase().includes(search) ||
+      url.toLowerCase().includes(search) ||
+      dob.toLowerCase().includes(search)
     );
   });
+}
+
+function sortByName(a, b) {
+  console.log("sorting by name");
+  return a.name.localeCompare(b.name);
+}
+
+function sortBirthdays(birthdays, sortBy, sortOrder) {
+  const sortedBirthdays = birthdays.sort(); // Create a copy of birthdays array
+  sortedBirthdays.sort((a, b) => {
+    if (sortOrder === "asc") {
+      return a[sortBy] > b[sortBy] ? 1 : -1;
+    } else {
+      return a[sortBy] < b[sortBy] ? 1 : -1;
+    }
+  });
+  return sortedBirthdays.sort(sortByName);
 }
 
 function initEvents() {
@@ -219,6 +237,18 @@ function initEvents() {
   $("#birthdayForm").addEventListener("reset", () => {
     // console.warn("reset", editId);
     editId = undefined;
+  });
+
+  document.querySelectorAll("#birthdayTable th span").forEach(span => {
+    span.addEventListener("click", () => {
+      const sortBy = span.dataset.sortBy;
+      const sortOrder = span.dataset.sortOrder === "asc" ? "desc" : "asc"; // Toggle sorting order
+      span.dataset.sortOrder = sortOrder;
+
+      // Sort meals based on the selected criterion and sorting order
+      const sortedBirthdays = sortBirthdays(allBirthdays, sortBy, sortOrder);
+      renderBirthdays(sortedBirthdays);
+    });
   });
 
   $("#birthdayTable tbody").addEventListener("click", e => {
