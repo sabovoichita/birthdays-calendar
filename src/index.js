@@ -79,13 +79,18 @@ function getBirthdayAsHTML(birthday) {
   <td>
   <a href = " ${url}"  target = "_blank">${displayUrl}</a>
   </td>
-  <td>${birthday.dob}</td>
+  <td>${formatDate(birthday.dob)}</td>
   <td>
   <button type="button" data-id="${birthday.id}" class="action-btn edit-btn" title="edit">🖍</button>
   <button type="button" data-id="${birthday.id}" class="action-btn delete-btn" title="recycle">♻</button>
 
   </td>
 </tr>`;
+}
+
+function formatDate(dateStr) {
+  const [year, month, day] = dateStr.split("/");
+  return `${day}/${month}/${year}`;
 }
 
 function areBirthdayEquals(renderedBirthdays, birthdays) {
@@ -105,19 +110,39 @@ function areBirthdayEquals(renderedBirthdays, birthdays) {
 
 let renderedBirthdays = [];
 function renderBirthdays(birthdays) {
-  // birthdays.sort(sortBirthdays);
-  // console.time("eq-check");
+  // Ensure that the age is updated based on today's date for each birthday
+  birthdays.forEach(birthday => {
+    birthday.age = calculateAgeFromDOB(birthday.dob);
+  });
+
+  // Check if the rendered birthdays are the same as the new birthdays to avoid unnecessary rendering
   if (areBirthdayEquals(renderedBirthdays, birthdays)) {
-    // console.timeEnd("eq-check");
     return;
   }
-  // console.timeEnd("eq-check");
 
-  renderedBirthdays === birthdays;
-  // console.time("render");
+  // Update the rendered birthdays to the current list
+  renderedBirthdays = birthdays;
+
+  // Generate the HTML for the birthday rows
   const birthdayHTML = birthdays.map(getBirthdayAsHTML);
   $("#birthdayTable tbody").innerHTML = birthdayHTML.join("");
-  // console.timeEnd("render");
+}
+
+// Function to calculate the age from the dob (yyyy/mm/dd)
+function calculateAgeFromDOB(dob) {
+  const [year, month, day] = dob.split("/");
+  const birthdayDate = new Date(`${year}-${month}-${day}`);
+  const currentDate = new Date();
+
+  let age = currentDate.getFullYear() - birthdayDate.getFullYear();
+  const monthDifference = currentDate.getMonth() - birthdayDate.getMonth();
+  const dayDifference = currentDate.getDate() - birthdayDate.getDate();
+
+  if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+    age--;
+  }
+
+  return age;
 }
 
 function loadBirthdays() {
@@ -230,7 +255,10 @@ function initEvents() {
   $("#search").addEventListener("input", e => {
     const search = e.target.value;
     const birthdays = filterElements(allBirthdays, search);
-    renderBirthdays(birthdays);
+    // Recalculate and refresh the ages once per day
+    setInterval(() => {
+      renderBirthdays(allBirthdays);
+    }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
   });
 
   $("#birthdayForm").addEventListener("submit", onSubmit);
@@ -269,3 +297,55 @@ function initEvents() {
 }
 initEvents();
 loadBirthdays();
+
+const createStructure = () => {
+  return `
+    <div class="container">
+      <h3>Age Calculator</h3>
+      <div class="form">
+        <label for="birthday">Enter date of birth</label>
+        <input type="date" name="birthday" id="birthday" />
+        <button id="btn">Calculate Age</button>
+        <p id="result">Your age is___years old</p>
+      </div>
+    </div>
+    `;
+};
+
+const insertHTML = () => {
+  document.querySelector("#calcAge").innerHTML = createStructure();
+};
+
+const calculateAge = () => {
+  const birthdayEl = document.querySelector("#birthday");
+  const resultEl = document.querySelector("#result");
+  const birthdayValue = birthdayEl.value;
+
+  if (!birthdayValue) {
+    alert("Please enter your birthday");
+    return;
+  }
+
+  const age = getAge(birthdayValue);
+  resultEl.innerText = `Your age is ${age} year${age !== 1 ? "s" : ""} old`;
+};
+
+const getAge = birthdayValue => {
+  const currentDate = new Date();
+  const birthdayDate = new Date(birthdayValue);
+
+  let age = currentDate.getFullYear() - birthdayDate.getFullYear();
+
+  const monthDifference = currentDate.getMonth() - birthdayDate.getMonth();
+  const dayDifference = currentDate.getDate() - birthdayDate.getDate();
+
+  if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+    age--;
+  }
+  return age;
+};
+
+insertHTML();
+
+const btnEl = document.querySelector("#btn");
+btnEl.addEventListener("click", calculateAge);
