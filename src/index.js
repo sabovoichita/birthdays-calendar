@@ -110,25 +110,20 @@ function areBirthdayEquals(renderedBirthdays, birthdays) {
 
 let renderedBirthdays = [];
 function renderBirthdays(birthdays) {
-  // Ensure that the age is updated based on today's date for each birthday
   birthdays.forEach(birthday => {
     birthday.age = calculateAgeFromDOB(birthday.dob);
   });
 
-  // Check if the rendered birthdays are the same as the new birthdays to avoid unnecessary rendering
   if (areBirthdayEquals(renderedBirthdays, birthdays)) {
     return;
   }
 
-  // Update the rendered birthdays to the current list
   renderedBirthdays = birthdays;
 
-  // Generate the HTML for the birthday rows
   const birthdayHTML = birthdays.map(getBirthdayAsHTML);
   $("#birthdayTable tbody").innerHTML = birthdayHTML.join("");
 }
 
-// Function to calculate the age from the dob (yyyy/mm/dd)
 function calculateAgeFromDOB(dob) {
   const [year, month, day] = dob.split("/");
   const birthdayDate = new Date(`${year}-${month}-${day}`);
@@ -252,14 +247,12 @@ function sortBirthdays(birthdays, sortBy, sortOrder) {
 }
 
 function initEvents() {
-  // Search input event listener
   $("#search").addEventListener("input", e => {
     const search = e.target.value;
     const filteredBirthdays = filterElements(allBirthdays, search);
     renderBirthdays(filteredBirthdays); // Only render the filtered birthdays
   });
 
-  // Set up an interval to refresh the ages once a day
   setInterval(() => {
     allBirthdays.forEach(birthday => {
       birthday.age = calculateAgeFromDOB(birthday.dob);
