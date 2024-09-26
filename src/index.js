@@ -227,7 +227,7 @@ function filterElements(birthdays, search) {
     return (
       name.toLowerCase().includes(search) ||
       contact.toLowerCase().includes(search) ||
-      age.toLowerCase().includes(search) ||
+      String(age).toLowerCase().includes(search) ||
       url.toLowerCase().includes(search) ||
       dob.toLowerCase().includes(search)
     );
@@ -252,18 +252,23 @@ function sortBirthdays(birthdays, sortBy, sortOrder) {
 }
 
 function initEvents() {
+  // Search input event listener
   $("#search").addEventListener("input", e => {
     const search = e.target.value;
-    const birthdays = filterElements(allBirthdays, search);
-    // Recalculate and refresh the ages once per day
-    setInterval(() => {
-      renderBirthdays(allBirthdays);
-    }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+    const filteredBirthdays = filterElements(allBirthdays, search);
+    renderBirthdays(filteredBirthdays); // Only render the filtered birthdays
   });
+
+  // Set up an interval to refresh the ages once a day
+  setInterval(() => {
+    allBirthdays.forEach(birthday => {
+      birthday.age = calculateAgeFromDOB(birthday.dob);
+    });
+    renderBirthdays(allBirthdays);
+  }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
 
   $("#birthdayForm").addEventListener("submit", onSubmit);
   $("#birthdayForm").addEventListener("reset", () => {
-    // console.warn("reset", editId);
     editId = undefined;
   });
 
@@ -273,7 +278,6 @@ function initEvents() {
       const sortOrder = span.dataset.sortOrder === "asc" ? "desc" : "asc"; // Toggle sorting order
       span.dataset.sortOrder = sortOrder;
 
-      // Sort meals based on the selected criterion and sorting order
       const sortedBirthdays = sortBirthdays(allBirthdays, sortBy, sortOrder);
       renderBirthdays(sortedBirthdays);
     });
@@ -290,11 +294,11 @@ function initEvents() {
       });
     } else if (e.target.matches("button.edit-btn")) {
       const id = e.target.dataset.id;
-
       startEdit(id);
     }
   });
 }
+
 initEvents();
 loadBirthdays();
 
